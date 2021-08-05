@@ -103,11 +103,12 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   let htmlBoard = [];
 
   for(let y = 0; y < nrows; y++){
-    htmlBoard[y]=[];
+    let row =[];
       for(let x = 0; x < ncols; x++){
         let coord = `${y}-${x}`;
-        htmlBoard[y][x] = <Cell key={coord} isLit={board[x][y]} flipCellsAroundMe={evt => flipCellsAround(coord)} />;
+        row.push(<Cell key={coord} isLit={board[x][y]} flipCellsAroundMe={evt => flipCellsAround(coord)} />);
       }
+    htmlBoard.push(<tr key={y}>{row}</tr>)
   };
 
   return (
