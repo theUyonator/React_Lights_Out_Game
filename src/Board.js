@@ -46,13 +46,13 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
 
   function hasWon() {
     // TODO: check the board in state to determine whether the player has won.
-    // board.every(function(arr){
-    //   return arr.every(function(e){
-    //     return !e;
-    //   });
-    // });
+    return board.every(function(arr){
+      return arr.every(function(e){
+        return !e;
+      });
+    });
 
-    board.every(arr => arr.every(el => !el));
+    // board.every(arr => arr.every(el => !el));
   };
 
   function flipCellsAround(coord) {
@@ -95,9 +95,6 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   if(hasWon()){
     return <div> You won the game! </div>;
   };
-
-  let winningMsg = hasWon ? <div> You won the game! </div> : "";
-  return winningMsg
 
   // make table board
 
