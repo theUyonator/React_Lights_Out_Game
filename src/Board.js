@@ -34,13 +34,15 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   function createBoard() {
     let initialBoard = [];
     // TODO: create array-of-arrays of true/false values
-    for(let i = 0; i < nrows; i++){
-      initialBoard[i]=[];
-        for(let j = 0; j < ncols; j++){
-          initialBoard[i][j] = Math.random() <  chanceLightStartsOn ? true : false;
+    for(let y = 0; y < nrows; y++){
+      let row = [];
+        for(let x = 0; x < ncols; x++){
+          row.push(Math.random() <  chanceLightStartsOn)
         }
+
+        initialBoard.push(row);
     };
-    console.log(initialBoard);
+    // console.log(initialBoard);
     return initialBoard;
   }
 
@@ -106,7 +108,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
     let row =[];
       for(let x = 0; x < ncols; x++){
         let coord = `${y}-${x}`;
-        row.push(<Cell key={coord} isLit={board[x][y]} flipCellsAroundMe={evt => flipCellsAround(coord)} />);
+        row.push(<Cell key={coord} isLit={board[y][x]} flipCellsAroundMe={evt => flipCellsAround(coord)} />);
       }
     htmlBoard.push(<tr key={y}>{row}</tr>)
   };
